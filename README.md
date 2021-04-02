@@ -8,7 +8,6 @@
 -->
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![AWS Code Build][codebuild-shield]][codebuild-url]
 
 
 
@@ -36,7 +35,7 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
+  * [Dependencies](#dependencies)
   * [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
@@ -56,28 +55,34 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Make sure you install Docker and Docker-compose. This project is very simple - exists just to demonstrate
-the code needed to run a flask app.
+This repo aims to be a cloud and local compatible approach to modern application environment handling.
 
-### Prerequisites
-* Docker
+Environment files committed with the repo bring us some clear advantages that we should consider
+when building software.
+
+At KUNGFU.AI, many of our usecases are single container microservice deployment into a cloud. By committing secrets to
+cloud Secret Manager, and keeping Secret IDs + other environment data within our env files, we're able to:
+
+1. Keep our deployed assets secure
+2. Developers don't have to pass keys, know about keys, or share env files (YUCK)
+3. Developers can pull and run their repos immediately.
+
+The kungfuai/env repo aims to simplify the above usecases.
+
+### Dependencies
+Python 3.8
 
 ### Installation
 
-1. Clone the repo
-```sh
-git clone https://github.com/kungfuai/flask-gunicorn-docker.git
-```
-2. Run docker-compose
-```sh
-docker-compose up
-```
+`pip install https://github.com/kungfuai/env.git`
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/kungfuai/flask-gunicorn-docker/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/kungfuai/env/issues) for a list of proposed features (and known issues).
 
+1. Add semantic versioning
+2. Deploy to PyPi
 
 
 <!-- CONTRIBUTING -->
@@ -105,24 +110,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Endurance Idehen - endurance.idehen@kungfu.ai
 
-Project Link: [https://github.com/kungfuai/flask-gunicorn-docker.git](https://github.com/kungfuai/flask-gunicorn-docker.git)
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-url]: https://asdf.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/kungfuai/
-[codebuild-shield]: https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiRFFON2l6NC9xTzRORFpHc1lJYS9GMjBBdE4wb3lNSGRNUnUrSFJYcnFEZGhrK0ZHZHdnRHY3V3RFWWNUcEFSWEtjSzNyNEdjWGdJQW9TYVhUZnR5bm1jPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik5GZDhTQjRTREdkQmtKVkEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
-[codebuild-url]: https://us-east-2.console.aws.amazon.com/codesuite/codebuild/478665595712/projects/flask-gunicorn-docker/history?region=us-east-2&builds-meta=%7B%22f%22%3A%7B%22text%22%3A%22%22%7D%2C%22s%22%3A%7B%7D%2C%22n%22%3A20%2C%22i%22%3A0%7D
 [product-screenshot]: images/screenshot.png
