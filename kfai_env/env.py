@@ -26,8 +26,7 @@ class Environment:
         return self._possible_environments
 
     def load_env(self):
-        # if no ENV is set, we are running in local development
-        env = os.getenv("ENV", "local")
+        env = os.getenv("ENV", "local").lower()
         for env_file_name in self._possible_environments[env]:
             intended_path_to_load = Path(self._env_base_path, env_file_name)
             load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=True)
