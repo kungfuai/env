@@ -1,5 +1,6 @@
 import pathlib
 from setuptools import find_packages, setup
+import versioneer
 
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
@@ -10,7 +11,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="kungufai-env",
-    version="0.1.0",
+    version=versioneer.get_version(),
     description="Environment handling to simplify development environments",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -29,4 +30,5 @@ setup(
     )),
     install_requires=["python-dotenv"],
     include_package_data=True,
+    cmdclass=versioneer.get_cmdclass(),
 )

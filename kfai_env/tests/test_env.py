@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from kfai_env.environment.register import Environment
+from kfai_env.env import Environment
 from kfai_env.tests.utils.set_env import set_env
 
 

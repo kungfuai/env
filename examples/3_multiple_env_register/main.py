@@ -1,6 +1,6 @@
 import os
 
-from kfai_env.environment.register import Environment
+from kfai_env.env import Environment
 
 # Set the env to be test
 os.environ['ENV'] = 'TEST'

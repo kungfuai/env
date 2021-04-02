@@ -28,5 +28,4 @@ class Environment:
         env = os.getenv("ENV", "LOCAL")
         for env_file_name in self._possible_environments[env]:
             intended_path_to_load = Path(self._env_base_path, env_file_name)
-            print(intended_path_to_load)
             load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=True)
