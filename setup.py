@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="kungufai-env",
+    name="kungfuai-env",
     version=versioneer.get_version(),
     description="Environment handling to simplify development environments",
     long_description=README,
