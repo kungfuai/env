@@ -26,7 +26,7 @@ setup(
     ],
     packages=find_packages(exclude=(
         "examples",
-        "kfai_env/tests",
+        "kfai_env/test",
     )),
     install_requires=["python-dotenv"],
     include_package_data=True,
