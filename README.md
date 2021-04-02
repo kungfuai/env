@@ -18,12 +18,11 @@
     <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQEgWgybqu6dDg/company-logo_200_200/0?e=1611187200&v=beta&t=svIQxQQYJJWDvApMPTxnS3w5v_XXMHQFAvtSxzWpy6E" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Flask + Gunicorn with Docker Example</h3>
+  <h3 align="center">KUNGFU.AI Env</h3>
 
   <p align="center">
-    An example application for writing Flask applications
+    Environment handling to simplify development environments
     <br />
-    <a href="https://kungfuai.atlassian.net/wiki/spaces/AR/pages/829325363/Reference+Scalable+Web+Application+Architecture+in+AWS+with+ECS"><strong>Explore the docs »</strong></a>
   </p>
 </p>
 
@@ -45,9 +44,7 @@
 * [Acknowledgements](#acknowledgements)
 
 ### Built With
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-* [Gunicorn](https://gunicorn.org/)
-* [Docker](https://www.docker.com/)
+* [Python-Dotenv](https://flask.palletsprojects.com/en/1.1.x/)
 * [Python 3.8](https://www.python.org/)
 
 
@@ -74,7 +71,7 @@ Python 3.8
 
 ### Installation
 
-`pip install https://github.com/kungfuai/env.git`
+`pip install kungfuai-env`
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -116,7 +113,7 @@ Endurance Idehen - endurance.idehen@kungfu.ai
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://asdf.com
+[license-url]: https://github.com/kungfuai/env/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/kungfuai/
 [product-screenshot]: images/screenshot.png

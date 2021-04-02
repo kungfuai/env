@@ -1,8 +1,8 @@
 import os
 import unittest
 
-from src.environment.register import Environment
-from src.tests.utils.set_env import set_env
+from kfai_env.environment.register import Environment
+from kfai_env.tests.utils.set_env import set_env
 
 
 class TestEnvUnittest(unittest.TestCase):
