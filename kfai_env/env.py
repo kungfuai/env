@@ -1,7 +1,11 @@
+import logging
 import os
+from os.path import exists
 from pathlib import Path
 
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 
 class Environment:
@@ -27,6 +31,8 @@ class Environment:
 
     def load_env(self):
         env = os.getenv("ENV", "local").lower()
+        logger.info(f"Loading env {env}")
         for env_file_name in self._possible_environments[env]:
             intended_path_to_load = Path(self._env_base_path, env_file_name)
-            load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=True)
+            if exists(intended_path_to_load):
+                load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=True)
