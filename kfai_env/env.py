@@ -34,7 +34,7 @@ class Environment:
         return self._possible_environments
 
     def load_env(self):
-        env = os.getenv("ENV", "local").lower()
+        env = self.get_env()
         logger.info(f"Loading env {env}")
         did_load_occur = False
         for env_file_name in self._possible_environments[env]:
@@ -49,3 +49,11 @@ class Environment:
             "PLEASE READ: Did you appropriately set the path in your Environment() constructor? " \
             "Usually, we set it to Environment('src/env') where the class is constructed at the " \
             "`src` level, and there are env files located in the `src/env directory"
+
+    def get_env(self):
+        return os.getenv("ENV", "local").lower()
+
+    def get_env_file(self):
+        env = self.get_env()
+        env_file_name = self._possible_environments[env][0]
+        return Path(self._env_base_path, env_file_name)

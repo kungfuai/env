@@ -1,8 +1,11 @@
+import logging
 import os
 import unittest
 
 from kfai_env.env import Environment
 from kfai_env.test.utils.set_env import set_env
+
+logger = logging.getLogger(__name__)
 
 
 class TestEnvUnittest(unittest.TestCase):
