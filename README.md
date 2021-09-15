@@ -64,7 +64,7 @@ cloud Secret Manager, and keeping Secret IDs + other environment data within our
 2. Developers don't have to pass keys, know about keys, or share env files (YUCK)
 3. Developers can pull and run their repos immediately.
 
-The kungfuai/env repo aims to simplify the above usecases.
+The kungfuai/env repo aims to simplify these use-cases.
 
 ### Dependencies
 Python 3.8
@@ -73,27 +73,80 @@ Python 3.8
 
 `pip install kungfuai-env`
 
+### How does it work?
+
+The flow is 3 steps - Construction, Registration, and Loading.
+e.g.
+```python
+# Construction
+env = Environment('src/env')
+# Registration
+env.register_environment("test")
+env.register_environment("prod")
+# Loading
+env.load_env()
+```
+
+In the above example, `Environment()` is constructed, and the path to environment files is set to be located at
+`src/env`.
+
+Next, we state that we have a `test` environment, and a `prod` environment that we intend to load. 
+The names are important - seeing `test` indicates that `env.load_env()` will seek a `.test.env` file in the `src/env` directory.
+The same would be true for `prod` / `.prod.env`
+
+### Runtime Environment Selection
+
+Now, we know how to handle the environments. How do we know which ones to load when the application starts?
+
+There is a special environment variable that we always watch named `ENV`.
+
+With the above example in mind, if you set `ENV=PROD` or `ENV=prod`, you will load the `.prod.env` file.
+
+If you set `ENV=TEST` or `ENV=test`, you will load the `.test.env` file.
+
+If you do not set anything for `ENV`, you will load, by default, the `.local.env` file.
+
+
+### Usage
+
+#### Simple Example
+
+In the most simple of applications, imagine a `main.py` with a `.local.env` environment 
+
+```python
+# main.py
+import os
+from kfai_env.env import Environment
+
+if __name__ == "__main__":
+    print("Simple Python App Example")
+
+    e = Environment()
+    e.register_environment("prod")
+    e.load_env()
+    print(os.getenv("TEST_ENV"))
+```
+
+```dotenv
+# .local.env
+TEST_ENV=HELLOWORLDFROMLOCAL
+```
+
+```dotenv
+# .prod.env
+TEST_ENV=HELLOWORLDFROMPROD
+```
+
+If we were to run `python3 main.py` with this above example program, we would see `HELLOWORLDFROMLOCAL`.
+If we were to run `ENV=PROD python3 main.py`, we would see `HELLOWORLDFROMPROD`.
+
+
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/kungfuai/env/issues) for a list of proposed features (and known issues).
 
-1. Add semantic versioning
-2. Deploy to PyPi
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
+1. Upgrade project to use poetry as the build and deploy system (instead of pip + versioneer)
 
 <!-- LICENSE -->
 ## License
@@ -101,13 +154,10 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
-
 <!-- CONTACT -->
 ## Contact
 
 Endurance Idehen - endurance.idehen@kungfu.ai
-
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

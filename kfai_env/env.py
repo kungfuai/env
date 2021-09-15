@@ -19,6 +19,10 @@ class Environment:
 
         # does this env exist?
         if env_name in self._possible_environments:
+            logger.warning(
+                f"The env_name {env_name} is already registered. Did you mistakenly call "
+                f"`register_environment` again?"
+            )
             return
 
         self._possible_environments[env_name] = [
@@ -32,7 +36,16 @@ class Environment:
     def load_env(self):
         env = os.getenv("ENV", "local").lower()
         logger.info(f"Loading env {env}")
+        did_load_occur = False
         for env_file_name in self._possible_environments[env]:
             intended_path_to_load = Path(self._env_base_path, env_file_name)
+            logger.info(intended_path_to_load)
             if exists(intended_path_to_load):
-                load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=True)
+                did_load_occur = True
+                load_dotenv(dotenv_path=intended_path_to_load, verbose=True, override=False)
+
+        assert did_load_occur, \
+            "ERROR: No environments were loaded. " \
+            "PLEASE READ: Did you appropriately set the path in your Environment() constructor? " \
+            "Usually, we set it to Environment('src/env') where the class is constructed at the " \
+            "`src` level, and there are env files located in the `src/env directory"
